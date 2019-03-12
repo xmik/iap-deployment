@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -eu
+
+command="$1"
+case "${command}" in
+  get_code)
+      if [[ ! -d "ProjectLanguage" ]]; then
+        git clone https://github.com/MagFry/ProjectLanguage.git
+      fi
+      # TODO: git clone the rest 3 projects
+      exit $?
+      ;;
+  up)
+      docker-compose -f ./docker-compose.yml -p iap up -d
+      exit $?
+      ;;
+  down)
+      docker-compose -f ./docker-compose.yml -p iap up -d
+      exit $?
+      ;;
+  *)
+      echo "Invalid command: '${command}'"
+      exit 1
+      ;;
+esac
+set +e
