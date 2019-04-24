@@ -1,28 +1,22 @@
 version: '2.2'
 services:
-  # # Headquarters database
-  # hqdb:
-  #   init: true
-  #   image: postgres:11.2-alpine
-  #   # same configuration as here: https://github.com/MagFry/ProjectLanguage/blob/master/ProjectLanguage/settings.py#L79
-  #   environment:
-  #     - POSTGRES_PASSWORD=qwerty12345
-  #   network_mode: host
-  # # Headquarters
-  # hq:
-  #   init: true
-  #   image: python:3.7.2
-  #   volumes:
-  #     - ${PWD}/scripts:/opt/scripts
-  #     - ${PWD}/ProjectLanguage:/usr/src/app
-  #   # TODO: instead of such entrypoint and command, run: /opt/scripts/run-headquarters.sh
-  #   entrypoint: /bin/bash
-  #   command: ["-c", "while true; do sleep 1d; done;"]
-  #   # TODO: maybe instead of using host network, let docker-compose
-  #   # work with its default behavior. For this to work, the hq service
-  #   # must have configurable db connection.
-  #   network_mode: host
-  #   # TODO: command to wait for the db to be ready, then start the hq server
+  # Headquarters database
+  hqdb:
+    init: true
+    image: postgres:11.2-alpine
+    # same configuration as here: https://github.com/MagFry/ProjectLanguage/blob/master/ProjectLanguage/settings.py#L79
+    environment:
+      - POSTGRES_PASSWORD=qwerty12345
+      - POSTGRES_DB=ProjectLanguage
+  # Headquarters Backend
+  hq:
+    init: true
+    image: iap-hq-backend:0.1.0
+    ports:
+      - 8000:8000
+    links:
+      # the container hqdb is known inside hq as: db
+      - hqdb:db
   # Branch office database
   bodb:
     init: true
@@ -30,8 +24,7 @@ services:
     #network_mode: host
     environment:
       - POSTGRES_PASSWORD=my_pw
-    ports:
-      - 5433:5432
+      - POSTGRES_DB=mydb
   # Branch office backend
   bo:
     init: true
@@ -41,6 +34,6 @@ services:
     links:
       # the container bodb is known inside bo as: db
       - bodb:db
-    # TODO: command to wait for the db to be ready, then start the bo server
+  # TODO:
   # Headquarters frontend
   # Branch office frontend

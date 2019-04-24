@@ -8,7 +8,10 @@ case "${command}" in
       if [[ ! -d "ProjectLanguage" ]]; then
         git clone https://github.com/MagFry/ProjectLanguage.git
       fi
-      # TODO: git clone the rest 3 projects
+      if [[ ! -d "iap-bo-backend" ]]; then
+        git clone git@github.com:xmik/iap-bo-backend.git
+      fi
+      # TODO: git clone the rest 2 projects
       exit $?
       ;;
   up)
@@ -16,7 +19,7 @@ case "${command}" in
       exit $?
       ;;
   down)
-      docker-compose -f ./docker-compose.yml -p iap up -d
+      docker-compose -f ./docker-compose.yml -p iap down
       exit $?
       ;;
   *)
