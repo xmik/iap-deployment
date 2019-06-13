@@ -4,15 +4,41 @@ set -eu
 
 command="$1"
 case "${command}" in
-  get_code)
-      if [[ ! -d "ProjectLanguage" ]]; then
-        git clone https://github.com/MagFry/ProjectLanguage.git
+  build_all)
+      ./tasks build_hq_backend
+      ./tasks build_bo_backend
+      ./tasks build_hq_frontend
+      ./tasks build_bo_frontend
+      exit $?
+      ;;
+  build_hq_backend)
+      if [[ ! -d "IAP_project" ]]; then
+        git clone git@github.com:MagFry/IAP_project.git
       fi
+      cd IAP_project
+      git checkout docker
+      ./tasks docker_build
+      exit $?
+      ;;
+  build_bo_backend)
       if [[ ! -d "iap-bo-backend" ]]; then
         git clone git@github.com:xmik/iap-bo-backend.git
       fi
-      # TODO: git clone the rest 2 projects
+      cd iap-bo-backend
+      # compile the code, produce the binaries
+      dojo "./tasks build"
+      # or, if you have dotnet installed locally, run this instead:
+      # ./tasks build
+      ./tasks docker_build
       exit $?
+      ;;
+  build_hq_frontend)
+      echo "Not implemented. TODO"
+      exit 1
+      ;;
+  build_bo_frontend)
+      echo "Not implemented. TODO"
+      exit 1
       ;;
   up)
       docker-compose -f ./docker-compose.yml -p iap up -d

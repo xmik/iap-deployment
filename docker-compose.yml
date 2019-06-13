@@ -7,7 +7,7 @@ services:
     # same configuration as here: https://github.com/MagFry/ProjectLanguage/blob/master/ProjectLanguage/settings.py#L79
     environment:
       - POSTGRES_PASSWORD=qwerty12345
-      - POSTGRES_DB=ProjectLanguage
+      - POSTGRES_DB=IAP_project
   # Headquarters Backend
   hq:
     init: true
@@ -29,6 +29,8 @@ services:
   bo:
     init: true
     image: iap-bo-backend:0.1.0
+    environment:
+      - IAP_BO_SYNCHRONIZATION_FREQUENCY=60
     ports:
       - 8080:8080
     links:
