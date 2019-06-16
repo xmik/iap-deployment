@@ -16,7 +16,6 @@ case "${command}" in
         git clone git@github.com:MagFry/IAP_project.git
       fi
       cd IAP_project
-      git checkout docker
       ./tasks docker_build
       exit $?
       ;;
