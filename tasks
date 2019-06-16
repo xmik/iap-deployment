@@ -13,8 +13,8 @@ case "${command}" in
       ;;
   build_hq_backend)
       if [[ ! -d "IAP_project" ]]; then
-        # git clone git@github.com:MagFry/IAP_project.git
-        git clone git@github.com:xmik/IAP_project.git
+        git clone git@github.com:MagFry/IAP_project.git
+        # git clone git@github.com:xmik/IAP_project.git
       fi
       cd IAP_project
       ./tasks docker_build
