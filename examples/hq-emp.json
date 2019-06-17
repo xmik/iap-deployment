@@ -1,0 +1,9 @@
+{
+       "employee_id": 4,
+       "name": "Mag Fry",
+       "email": "mag123@wp.pl",
+       "date_of_birth": "1996-01-25",
+       "pay": 30,
+       "branch_office_id": 0,
+       "isManager": "false"
+ }

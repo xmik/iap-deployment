@@ -25,7 +25,8 @@ or this command:
 
 ### Run the docker images
 
-Then, run all servers and applications in 6 docker containers:
+#### Start containers
+Run all servers and applications in 6 docker containers:
 ```
 ./tasks up
 ```
@@ -40,11 +41,11 @@ d811caebc7f5        postgres:11.2-alpine   "docker-entrypoint.s…"   5 seconds 
 7c50dfd0f1d0        postgres:11.2-alpine   "docker-entrypoint.s…"   5 seconds ago       Up 4 seconds        5432/tcp                 iap_hqdb_1
 ```
 
-Verify that API servers are listening and can answer:
+#### Verify that API servers are listening and can answer
 ```
 # Headquarters
-curl -i -L localhost:8000/api/branch_offices # this should work, but does not now
-curl -i -L localhost:8000/branch_offices # this works currently
+curl -i -L localhost:8000/api/branch_offices/list
+curl -i -L localhost:8000/api/employees/list/0
 
 # Branch Office
 curl -i -L localhost:8080/api/employees/list
@@ -52,12 +53,28 @@ curl -i -X POST localhost:8080/api/employees -d '{"email": "123@gmail.com", "nam
 curl -i -L localhost:8080/api/employees/list
 ```
 
+#### Verify synchronization in BO from HQ
+BO gets Employee objects from HQ.
+```
+# 1. Check that an Employee with email "mag123@wp.pl" does not exist in BO:
+curl -i  localhost:8080/api/employees/list
+# 2. Add an employee in HQ
+curl -i -X POST localhost:8000/api/employees -d @examples/hq-emp.json -H 'Content-Type: text/json; charset=utf-8'
+# 3. Check that it was added in HQ
+curl -i -L localhost:8000/api/employees/list/0
+# 4. Either wait for synchronization in BO or invoke it with:
+curl -i -X POST localhost:8080/api/synchronize -d ''
+# 5. Check that an Employee with email "mag123@wp.pl" exists in BO:
+curl -i  localhost:8080/api/employees/list
+```
+
+#### Log messages
 To view the log messages from 1 docker container:
 ```
 docker logs iap_bo_1
 ```
 
-
+#### Stop and remove the containers
 To stop the containers and remove all resources created by docker-compose:
 ```
 ./tasks down
