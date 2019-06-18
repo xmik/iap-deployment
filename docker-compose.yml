@@ -54,4 +54,5 @@ services:
       # the container hq is known inside hqfr as: hq
       - hq:hq
     ports:
-      - 3001:3001
+      # host:container
+      - 3001:3000
