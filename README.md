@@ -47,6 +47,9 @@ c44a8ab7dd1b        iap-hq-frontend:0.1.0              "bash -c run.sh"         
 ```
 # Headquarters
 curl -i -L localhost:8000/api/branch_offices/list
+curl -i -X POST localhost:8000/api/branch_offices -d '{"branch_office_name": "French_school", "branch_office_location": "Wawa"}'
+curl -i -L localhost:8000/api/branch_offices/list
+
 curl -i -L localhost:8000/api/employees/list/1
 
 # Branch Office
