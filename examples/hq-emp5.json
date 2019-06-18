@@ -1,8 +1,8 @@
 {
-       "name": "Employee BO1_1",
+       "name": "Employee BO2_1",
        "email": "ebo1_1@wp.pl",
        "date_of_birth": "1999-04-04",
        "pay": 25,
-       "branch_office_id": 1,
+       "branch_office_id": 2,
        "isManager": "false"
  }

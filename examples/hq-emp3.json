@@ -3,6 +3,6 @@
        "email": "niebieski@wp.pl",
        "date_of_birth": "1975-03-25",
        "pay": 40,
-       "branch_office_id": 0,
+       "branch_office_id": 1,
        "isManager": "false"
  }

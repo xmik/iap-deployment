@@ -47,7 +47,7 @@ c44a8ab7dd1b        iap-hq-frontend:0.1.0              "bash -c run.sh"         
 ```
 # Headquarters
 curl -i -L localhost:8000/api/branch_offices/list
-curl -i -L localhost:8000/api/employees/list/0
+curl -i -L localhost:8000/api/employees/list/1
 
 # Branch Office
 curl -i -L localhost:8080/api/employees/list
@@ -63,7 +63,7 @@ curl -i  localhost:8080/api/employees/list
 # 2. Add an employee in HQ
 curl -i -X POST localhost:8000/api/employees -d @examples/hq-emp.json -H 'Content-Type: text/json; charset=utf-8'
 # 3. Check that it was added in HQ
-curl -i -L localhost:8000/api/employees/list/0
+curl -i -L localhost:8000/api/employees/list/1
 # 4. Either wait for synchronization in BO or invoke it with:
 curl -i -X POST localhost:8080/api/synchronize -d ''
 # 5. Check that an Employee with email "mag123@wp.pl" exists in BO:
@@ -86,7 +86,7 @@ curl -i -X POST localhost:8000/api/employees -d @examples/hq-emp8.json -H 'Conte
 
 Verify that added:
 ```
-curl -i -L localhost:8000/api/employees/list/0
+curl -i -L localhost:8000/api/employees/list/1
 ```
 Verify that synchronized into BO:
 ```

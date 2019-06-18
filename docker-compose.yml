@@ -34,6 +34,7 @@ services:
     environment:
       - IAP_BO_SYNCHRONIZATION_FREQUENCY=60
       - IAP_BO_HQ_SERVER_URL=http://hq:8000
+      - IAP_BO_BRANCH_OFFICE_ID=1
     ports:
       - 8080:8080
     links:
