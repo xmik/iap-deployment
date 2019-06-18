@@ -35,10 +35,12 @@ Check that all the containers are running:
 ```
 $ docker ps -a
 CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS              PORTS                    NAMES
-6b0bee6c742c        iap-bo-backend:0.1.0   "bash -c iap-bo-back…"   3 seconds ago       Up 2 seconds        0.0.0.0:8080->8080/tcp   iap_bo_1
-1aa3fd645551        iap-hq-backend:0.1.0   "bash -c iap-hq-back…"   4 seconds ago       Up 1 second         0.0.0.0:8000->8000/tcp   iap_hq_1
-d811caebc7f5        postgres:11.2-alpine   "docker-entrypoint.s…"   5 seconds ago       Up 3 seconds        5432/tcp                 iap_bodb_1
-7c50dfd0f1d0        postgres:11.2-alpine   "docker-entrypoint.s…"   5 seconds ago       Up 4 seconds        5432/tcp                 iap_hqdb_1
+c44a8ab7dd1b        iap-hq-frontend:0.1.0              "bash -c run.sh"         About a minute ago   Up About a minute   0.0.0.0:3001->3001/tcp   iap_hqfr_1
+38587d7410bf        iap-hq-backend:0.1.0               "bash -c iap-hq-back…"   About a minute ago   Up About a minute   0.0.0.0:8000->8000/tcp   iap_hq_1
+1e514c54d85a        iap-bo-frontend:0.1.0              "bash -c run.sh"         About a minute ago   Up About a minute   0.0.0.0:3000->3000/tcp   iap_bofr_1
+6e7bc3aea868        iap-bo-backend:0.1.0               "bash -c iap-bo-back…"   About a minute ago   Up About a minute   0.0.0.0:8080->8080/tcp   iap_bo_1
+1f3f70f7a7fb        postgres:11.2-alpine               "docker-entrypoint.s…"   About a minute ago   Up About a minute   5432/tcp                 iap_hqdb_1
+726608095ad7        postgres:11.2-alpine               "docker-entrypoint.s…"   About a minute ago   Up About a minute   5432/tcp                 iap_bodb_1
 ```
 
 #### Verify that API servers are listening and can answer

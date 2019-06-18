@@ -39,6 +39,19 @@ services:
     links:
       # the container bodb is known inside bo as: db
       - bodb:db
-  # TODO:
-  # Headquarters frontend
-  # Branch office frontend
+  bofr:
+    init: true
+    image: iap-bo-frontend:0.1.0
+    links:
+      # the container bo is known inside bofr as: bo
+      - bo:bo
+    ports:
+      - 3000:3000
+  hqfr:
+    init: true
+    image: iap-hq-frontend:0.1.0
+    links:
+      # the container hq is known inside hqfr as: hq
+      - hq:hq
+    ports:
+      - 3001:3001
