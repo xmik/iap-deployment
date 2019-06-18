@@ -1,0 +1,9 @@
+{
+       "employee_id": 4,
+       "name": "Konrad Zielony",
+       "email": "zielony@wp.pl",
+       "date_of_birth": "1990-01-25",
+       "pay": 500,
+       "branch_office_id": 0,
+       "isManager": "true"
+ }

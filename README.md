@@ -68,6 +68,20 @@ curl -i -X POST localhost:8080/api/synchronize -d ''
 curl -i  localhost:8080/api/employees/list
 ```
 
+#### Add many employees to HQ
+```
+curl -i -X POST localhost:8000/api/employees -d @examples/hq-emp.json -H 'Content-Type: text/json; charset=utf-8'
+curl -i -X POST localhost:8000/api/employees -d @examples/hq-emp0.json -H 'Content-Type: text/json; charset=utf-8'
+curl -i -X POST localhost:8000/api/employees -d @examples/hq-emp1.json -H 'Content-Type: text/json; charset=utf-8'
+curl -i -X POST localhost:8000/api/employees -d @examples/hq-emp2.json -H 'Content-Type: text/json; charset=utf-8'
+curl -i -X POST localhost:8000/api/employees -d @examples/hq-emp3.json -H 'Content-Type: text/json; charset=utf-8'
+curl -i -X POST localhost:8000/api/employees -d @examples/hq-emp4.json -H 'Content-Type: text/json; charset=utf-8'
+curl -i -X POST localhost:8000/api/employees -d @examples/hq-emp5.json -H 'Content-Type: text/json; charset=utf-8'
+curl -i -X POST localhost:8000/api/employees -d @examples/hq-emp6.json -H 'Content-Type: text/json; charset=utf-8'
+curl -i -X POST localhost:8000/api/employees -d @examples/hq-emp7.json -H 'Content-Type: text/json; charset=utf-8'
+curl -i -X POST localhost:8000/api/employees -d @examples/hq-emp8.json -H 'Content-Type: text/json; charset=utf-8'
+```
+
 #### Log messages
 To view the log messages from 1 docker container:
 ```

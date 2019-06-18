@@ -1,0 +1,9 @@
+{
+       "employee_id": 4,
+       "name": "Jan Kowalski",
+       "email": "jank@wp.pl",
+       "date_of_birth": "1962-08-25",
+       "pay": 300,
+       "branch_office_id": 0,
+       "isManager": "true"
+ }
