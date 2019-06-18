@@ -82,6 +82,41 @@ curl -i -X POST localhost:8000/api/employees -d @examples/hq-emp7.json -H 'Conte
 curl -i -X POST localhost:8000/api/employees -d @examples/hq-emp8.json -H 'Content-Type: text/json; charset=utf-8'
 ```
 
+Verify that added:
+```
+curl -i -L localhost:8000/api/employees/list/0
+```
+Verify that synchronized into BO:
+```
+curl -i  localhost:8080/api/employees/list
+```
+
+### Add many employee hours to BO
+For 3 employees:
+
+```
+curl -i -X POST localhost:8080/api/employee_hours -d '{"value": "100", "employeeId": "1", "timePeriod": "17.06.2019-23.06.2019" }' -H 'Content-Type: text/json; charset=utf-8'
+curl -i -X POST localhost:8080/api/employee_hours -d '{"value": "100", "employeeId": "2", "timePeriod": "17.06.2019-23.06.2019" }' -H 'Content-Type: text/json; charset=utf-8'
+curl -i -X POST localhost:8080/api/employee_hours -d '{"value": "100", "employeeId": "3", "timePeriod": "17.06.2019-23.06.2019" }' -H 'Content-Type: text/json; charset=utf-8'
+curl -i -X POST localhost:8080/api/employee_hours -d '{"value": "100", "employeeId": "1", "timePeriod": "24.06.2019-01.07.2019" }' -H 'Content-Type: text/json; charset=utf-8'
+curl -i -X POST localhost:8080/api/employee_hours -d '{"value": "100", "employeeId": "2", "timePeriod": "24.06.2019-01.07.2019" }' -H 'Content-Type: text/json; charset=utf-8'
+curl -i -X POST localhost:8080/api/employee_hours -d '{"value": "100", "employeeId": "3", "timePeriod": "24.06.2019-01.07.2019" }' -H 'Content-Type: text/json; charset=utf-8'
+curl -i -X POST localhost:8080/api/employee_hours -d '{"value": "100", "employeeId": "1", "timePeriod": "02.07.2019-09.07.2019" }' -H 'Content-Type: text/json; charset=utf-8'
+curl -i -X POST localhost:8080/api/employee_hours -d '{"value": "100", "employeeId": "2", "timePeriod": "02.07.2019-09.07.2019" }' -H 'Content-Type: text/json; charset=utf-8'
+curl -i -X POST localhost:8080/api/employee_hours -d '{"value": "100", "employeeId": "3", "timePeriod": "02.07.2019-09.07.2019" }' -H 'Content-Type: text/json; charset=utf-8'
+curl -i -X POST localhost:8080/api/employee_hours -d '{"value": "100", "employeeId": "1", "timePeriod": "10.07.2019-15.07.2019" }' -H 'Content-Type: text/json; charset=utf-8'
+curl -i -X POST localhost:8080/api/employee_hours -d '{"value": "100", "employeeId": "1", "timePeriod": "02.02.2019-09.02.2019" }' -H 'Content-Type: text/json; charset=utf-8'
+```
+
+Verify that added:
+```
+curl -i  localhost:8080/api/employee_hours/list_all
+```
+Verify that migrated to BO:
+```
+curl -i -L localhost:8000/api/employee_hours/list
+```
+
 #### Log messages
 To view the log messages from 1 docker container:
 ```

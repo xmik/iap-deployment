@@ -12,6 +12,8 @@ services:
   hq:
     init: true
     image: iap-hq-backend:0.1.0
+    environment:
+      - IAP_HQ_BO_HOST=bo
     ports:
       - 8000:8000
     links:
